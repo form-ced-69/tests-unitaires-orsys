@@ -1,6 +1,6 @@
 projectKey=cedric:testunitaires
 serverUrl=http://localhost:9000
-serverVersion=6.7.6.38781
-dashboardUrl=http://localhost:9000/dashboard/index/cedric:testunitaires
-ceTaskId=AWd4ZwVM_31pgznvdwQl
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWd4ZwVM_31pgznvdwQl
+serverVersion=7.4.0.18908
+dashboardUrl=http://localhost:9000/dashboard?id=cedric%3Atestunitaires
+ceTaskId=AWd6fLoQjUcgWdYA8-iO
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWd6fLoQjUcgWdYA8-iO

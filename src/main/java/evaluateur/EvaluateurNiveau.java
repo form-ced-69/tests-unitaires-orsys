@@ -19,6 +19,13 @@ public class EvaluateurNiveau {
     private static final int LIMITE_CB = 50;
     private static final int LIMITE_BA = 70;
     private static final int MAX = 100;
+
+    /**
+     * Constructeur prive.
+     */
+    private EvaluateurNiveau() {
+        super();
+    }
         
     public static boolean isInRange( int value, int min, int max )
     {
@@ -43,29 +50,29 @@ public class EvaluateurNiveau {
         return true;
     }
     
-    public static String evaluerNiveau(  String str_cours,  String str_examen ) 
-            throws Exception
+    public static String evaluerNiveau(  String noteCours,  String noteExamen ) 
+            throws MauvaisFormatException, ValeurHorsBorneException
     {
          String niveau = ""; 
          String message = "Format Cours ["+  MIN_COURS+".."+  MAX_COURS+
                    "] Examen ["+  MIN_EXAMEN+".."+  MAX_EXAMEN+"]";
-        if (   isInt( str_cours) && isInt( str_examen ))
+        if (   isInt( noteCours) && isInt( noteExamen ))
         {
-            int cours = Integer.valueOf( str_cours );
-            int examen = Integer.valueOf( str_examen );
-            niveau = "";
+            int cours = Integer.parseInt( noteCours );
+            int examen = Integer.parseInt( noteExamen );
+            
             if ( isInRange( cours, MIN_COURS, MAX_COURS )
               && isInRange( examen, MIN_EXAMEN, MAX_EXAMEN ))
             {
                  niveau =   niveau(  cours +  examen  );
             }
             else {
-                throw new Exception( "Valeur(s) hors bornes. " + message );
+                throw new ValeurHorsBorneException( "Valeur(s) hors bornes. " + message );
             }
         }
         else
         {
-            throw new Exception("Mauvais format, entiers attendus. "+ message ); 
+            throw new MauvaisFormatException("Mauvais format, entiers attendus. "+ message ); 
         }
         return  niveau;
     }

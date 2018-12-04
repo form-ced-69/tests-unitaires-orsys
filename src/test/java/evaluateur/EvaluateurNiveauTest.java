@@ -27,7 +27,7 @@ class EvaluateurNiveauTest {
 	@CsvFileSource(resources = "/test-data-examen.csv")
 	void testsLimitesEvaluateurNiveau(String cours, String examen, String attendu) throws Exception {
 		// junit 5 syntax
-		//assertEquals(EvaluateurNiveau.evaluerNiveau(cours, examen), attendu);
+		assertEquals(EvaluateurNiveau.evaluerNiveau(cours, examen), attendu);
 		
 		// hamcrest
 		assertThat(EvaluateurNiveau.evaluerNiveau(cours, examen), is(equalTo(attendu)));
@@ -35,15 +35,11 @@ class EvaluateurNiveauTest {
 
 	@Test
 	public void testMauvaisFormatCours() {
-		Assertions.assertThrows(Exception.class, () -> {
-			EvaluateurNiveau.evaluerNiveau("1C", "70");
-		});
+		Assertions.assertThrows(MauvaisFormatException.class, () -> EvaluateurNiveau.evaluerNiveau("1C", "70"));
 	}
 
 	@Test
 	public void testValeurHorsBornesExamen() {
-		Assertions.assertThrows(Exception.class, () -> {
-			EvaluateurNiveau.evaluerNiveau("20", "76");
-		});
+		Assertions.assertThrows(ValeurHorsBorneException.class, () -> EvaluateurNiveau.evaluerNiveau("20", "76"));
 	}
 }
