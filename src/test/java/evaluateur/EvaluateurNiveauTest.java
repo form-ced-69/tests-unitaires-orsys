@@ -18,14 +18,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 @DisplayName("Tests fonctionnels de la classe EvaluateurNiveau")
 class EvaluateurNiveauTest {
 
-	@BeforeAll
-	public static void setEvaluateurNiveau() {
-	}
-
 	@DisplayName("Tests aux limites EvaluateurNiveau")
 	@ParameterizedTest(name = "{index} => cours={0}, examen={1}, attendu={2}")
 	@CsvFileSource(resources = "/test-data-examen.csv")
-	void testsLimitesEvaluateurNiveau(String cours, String examen, String attendu) throws Exception {
+	void testsLimitesEvaluateurNiveau(String cours, String examen, String attendu) throws MauvaisFormatException, ValeurHorsBorneException  {
 		// junit 5 syntax
 		assertEquals(EvaluateurNiveau.evaluerNiveau(cours, examen), attendu);
 		
