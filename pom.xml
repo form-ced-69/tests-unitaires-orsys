@@ -11,6 +11,11 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!-- Le plugin sonar:sonar ne se base pas sur la config sonar-project.properties (conf de sonar-scanner) -->
+		<sonar.projectKey>cedric:testunitaires</sonar.projectKey>
+		<sonar.projectName>Tests Unitaires</sonar.projectName>
+		<sonar.language>java</sonar.language>
 	</properties>
 
 	<build>
